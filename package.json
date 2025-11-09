@@ -7,9 +7,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts",
-    "cli:start": "node src/cli/index.js",
-    "cli:dev": "nodemon src/cli/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "cli:build": "tsc",
+    "cli:start": "node dist/cli/index.js",
+    "cli:dev": "tsx watch src/cli/index.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
@@ -27,10 +28,9 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "@types/node": "^24.3.0",
-    "nodemon": "^3.1.10",
+    "@types/node": "^24.10.0",
     "prisma": "^6.16.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   }
 }
