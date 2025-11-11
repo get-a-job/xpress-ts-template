@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { getHome } from "../controllers/homeController.js"
+import { getHome } from "../../controllers/api/homeController.js"
 
 const router = Router();
 

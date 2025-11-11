@@ -8,7 +8,7 @@ A simple template repo that is pre configured with:
 - [x] Prisma and postgres docker-compose
 - [x] Express
 - [x] Pino for logging
-- [ ] EJS, EJS Layout
+- [x] EJS, EJS Layout
 - [ ] tailwind Frontend
 - [ ] HTMX
 
@@ -66,3 +66,7 @@ I'm following [this link](https://blog.logrocket.com/express-typescript-node/).
 ##  Pino
 
 I got a config to add from chatgpt
+
+## EJS
+
+I followed chatgpt's instructions
