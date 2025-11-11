@@ -1,11 +1,9 @@
 import type { Express } from "express";
 
-import homeWebRoutes from "./web/homeRoutes.js"
-
-import homeApiRoutes from "./web/homeRoutes.js"
+import webRoutes from "./web/index.js";
+import apiRoutes from "./api/index.js";
 
 export function registerRoutes(app: Express) {
-
-    app.use("/", homeWebRoutes);
-    app.use("/api", homeApiRoutes);
+    app.use("/", webRoutes);
+    app.use("/api", apiRoutes);
 }
