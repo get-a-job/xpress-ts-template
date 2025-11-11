@@ -9,10 +9,11 @@ A simple template repo that is pre configured with:
 - [x] Express
 - [x] Pino for logging
 - [x] EJS, EJS Layout
-- [ ] tailwind
+- [x] tailwind
 - [ ] HTMX
 - [ ] AlpineJS
 - [ ] Add tests
+- [x] Add Dockerfile
 - [ ] Create GitHub template
 - [ ] Add GitHub actions
 - [ ] Build and Deploy locally
@@ -79,3 +80,21 @@ I got a config to add from chatgpt
 ## EJS
 
 I followed chatgpt's instructions
+
+## Tailwind
+
+Tailwind can be setup by following the guide on the [tailwind site](https://tailwindcss.com/docs/installation/tailwind-cli)
+
+As tailwind is built using the tailwind cli two tasks need to be added to our scripts.
+
+We added a public folder so our static content can be saved there and copied from src to dist as part of the build process
+
+The `dev:css` task continuously watches the files and regenerates the main.css file which is used in our `layout.ejs` file. We installed `concurrently` so that the `dev` task can watch the css while serving the index.ts file.
+
+The `build:css` task generates the production minified version of our css this is also run when the `build` script is run so it can be used in any build processes.
+
+##  Dockerfile
+
+Add a `Dockerfile` that is used to build and run the application.
+
+I updated the build script to copy the views and static files to the dist folder so the running application can see them.

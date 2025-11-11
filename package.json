@@ -5,12 +5,14 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "dev": "tsx watch src/server.ts",
+    "build:css": "tailwindcss -i ./src/public/css/tailwind.css -o ./src/public/css/main.css --minify",
+    "dev:css": "tailwindcss -i ./src/public/css/tailwind.css -o ./src/public/css/main.css --watch",
+    "dev": "concurrently \"npm run dev:css\" \"tsx watch src/index.ts\"",
+    "build": "npm run build:css && tsc && copyfiles -u 1 src/views/**/* dist/ && copyfiles -u 1 src/public/**/* dist/",
+    "start": "node dist/index.js",
     "cli:build": "tsc",
-    "cli:start": "node dist/cli/index.js",
     "cli:dev": "tsx watch src/cli/index.ts",
+    "cli:start": "node dist/cli/index.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
@@ -30,12 +32,16 @@
     "pino": "^10.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17",
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.5",
     "@types/express-ejs-layouts": "^2.5.4",
     "@types/node": "^24.10.0",
+    "concurrently": "^9.2.1",
+    "copyfiles": "^2.4.1",
     "pino-pretty": "^13.1.2",
     "prisma": "^6.16.3",
+    "tailwindcss": "^4.1.17",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }
