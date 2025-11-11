@@ -9,7 +9,6 @@ app.use(express.json());
 // Routes
 app.use("/", homeRoutes);
 
-// Global error handler (should be after routes)
 app.use(errorHandler);
 
 export default app;
