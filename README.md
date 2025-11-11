@@ -12,6 +12,14 @@ A simple template repo that is pre configured with:
 - [ ] tailwind
 - [ ] HTMX
 - [ ] AlpineJS
+- [ ] Add tests
+- [ ] Create GitHub template
+- [ ] Add GitHub actions
+- [ ] Build and Deploy locally
+- [ ] Deploy locally with db
+- [ ] Build with Jenkins
+- [ ] Deploy to server
+- [ ] Update readme
 
 ## ESM
 
