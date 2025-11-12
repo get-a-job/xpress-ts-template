@@ -1,14 +1,12 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20'
-            args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
 
     stages {
         stage('Install & Build') {
             steps {
+                echo "Installing dependencies and building the app"
+                sh 'node -v'
+                sh 'npm -v'
                 sh 'npm ci'
                 sh 'npm run build'
             }
@@ -16,20 +14,23 @@ pipeline {
 
         stage('Test') {
             steps {
+                echo "Running tests"
                 sh 'npm test'
             }
         }
+
         stage('Docker Build & Push') {
             steps {
                 script {
                     sh 'git config --global --add safe.directory $PWD'
-                    
-                    def APP_NAME = 'express-ts-template'
+
                     def branch = env.BRANCH_NAME ?: 'local'
                     def commit_hash = sh(
                         script: 'git rev-parse --short HEAD',
                         returnStdout: true
                     ).trim()
+
+                    echo "Building Docker image for branch: ${branch}, commit: ${commit_hash}"
 
                     if (branch == 'main') {
                         sh """
@@ -48,16 +49,6 @@ pipeline {
                     }
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            echo "Cleaning up dangling containers and build cache"
-            sh '''
-            docker container prune -f || true
-            docker builder prune -f || true
-            '''
         }
     }
 }
