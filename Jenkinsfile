@@ -19,10 +19,11 @@ pipeline {
                 sh 'npm test'
             }
         }
-
         stage('Docker Build & Push') {
             steps {
                 script {
+                    sh 'git config --global --add safe.directory $PWD'
+
                     def branch = env.BRANCH_NAME ?: 'local'
                     def commit_hash = sh(
                         script: 'git rev-parse --short HEAD',
