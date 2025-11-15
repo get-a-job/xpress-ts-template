@@ -23,6 +23,7 @@ A simple template repo that is pre configured with:
 - [x] Deploy to server
 - [ ] Update readme
 - [x] Add renovate
+- [x] Add nvm
 
 ## ESM
 
@@ -120,3 +121,7 @@ Update vitest config to have a 60 second timeout so testcontainers can start
 Add github action to enable test containers on github.
 
 > This means test containers no longer work locally
+
+## NVM
+
+The `.nvmrc` adds an easy way to switch to a compatible version of node. Just type `nvm use`
