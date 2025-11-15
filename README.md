@@ -19,7 +19,7 @@ A simple template repo that is pre configured with:
 - [x] Build and Deploy locally
 - [x] Deploy locally with db
 - [x] Build with Jenkins
-- [ ] integration tests relying on DB
+- [ ] integration tests relying on DB Testcontainers
 - [ ] Deploy to server
 - [ ] Update readme
 - [x] Add renovate
@@ -106,3 +106,17 @@ I updated the build script to copy the views and static files to the dist folder
 The minified versions of these can be included to our source code in the `public/vendors` folder. These can then be added to the layout file.
 
 ## Github actions
+
+A simple github action that install dependencies and run tests
+
+> This is included so renovate can update dependencies
+
+##  Testcontianers
+
+Install postgrest and pg.
+
+Update vitest config to have a 60 second timeout so testcontainers can start
+
+Add github action to enable test containers on github.
+
+> This means test containers no longer work locally
